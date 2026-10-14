@@ -1,0 +1,6 @@
+# Your filled-in config holds your own board links: keep it out of this public repo.
+wolfepack.config.md
+*.bak
+*.bak-*
+.DS_Store
+Thumbs.db
