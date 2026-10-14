@@ -74,3 +74,20 @@ middle tier. The builder and reviewers cost what any card of that size does
 
 Session crons die with the session and expire after 7 days. When Wolfe's session restarts (or after
 compaction, if the crons are gone), run the `incident-watch` skill again and tell Dion the watch is back.
+
+## Scaling during an incident
+
+Only the team lead (Wolfe) may add workers or instances, enlarge them, or raise autoscaling
+limits, and only when an incident or a clear capacity signal calls for it. No speculative scaling.
+
+- **Use the spec-change routine.** Each change goes through the hosting provider's spec-change
+  routine: save the current spec, re-fetch and compare it right before applying, apply, watch for
+  10 minutes, and roll back on trouble.
+- **Log it.** Each change is logged on the ops log card with its reason, its undo and the watch
+  result, and Dion gets a one-line note.
+- **Scale back down** a few hours after the incident ends.
+- **Check before adding instances of a worker.** Read its loops for single-instance assumptions
+  (sweeps that would double-send or double-sync). When a loop is busy and unsafe to duplicate,
+  split it into its own component instead.
+- **Stays Dion's:** database resizes, DNS and secrets.
+- **When Dion is away, uptime comes before cost.**

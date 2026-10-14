@@ -51,7 +51,8 @@ brackets below come from the config. Then load the Trello connector's tools with
    fix at once, review it and merge it when safe. Resolve incidents only under the resolve rule.
    The goal: by morning, every alert is root-caused and its fix is in progress or merged
    (`docs/incident-response.md`).
-10. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
+10. **Absence mode.** When Dion grants it for a window, follow .
+11. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
    what you already know.
 
 ## What stays Dion's

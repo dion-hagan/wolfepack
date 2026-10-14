@@ -59,7 +59,8 @@ wolfepack/
     teams-and-models.md    teams, the model by the work, reviews by risk, cost
     desktop-app-settings.md  app settings, permission modes, Trello connector, gh auth
     memory.md              memory folder conventions
-    incident-response.md   alert -> responder -> fix -> merge -> resolve; severity; the resolve rule
+    incident-response.md   alert -> responder -> fix -> merge -> resolve; severity; the resolve rule; scaling
+    absence-mode.md        a trial: full operating permissions while Dion is away, with guardrails
   templates/
     pull_request_template.md   card.md   ops-card.md   status-report.md
 ```
