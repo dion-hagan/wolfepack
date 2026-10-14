@@ -47,6 +47,9 @@ offer Dion three ways:
    `update-config` skill does this);
 3. merge by hand, in the order you give him.
 
+Going away? `absence-mode.md`, "Optional setup: allow rules", lists the allow rules for a
+remote-only stretch: a standard tier, and an opt-in high-risk tier.
+
 ## 4. The Trello connector
 
 claude.ai, Settings, Connectors, connect **Trello**. Sessions use it to read and move cards.
