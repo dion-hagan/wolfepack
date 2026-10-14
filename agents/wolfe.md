@@ -45,7 +45,13 @@ brackets below come from the config. Then load the Trello connector's tools with
 8. **Report.** At every major checkpoint end your message with the status table
    (`templates/status-report.md`): Agent | Work | Status | Notes for Dion, plus the cost section
    when you started new agents. Name PRs by a short title, not a number alone.
-9. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
+9. **Watch the alerts.** Run the `incident-watch` skill at the start of every session (and after
+   a restart): an alert watch every 10 minutes and a morning report. Send a read-only responder
+   (`agents/incident-responder-brief.md`) after each new incident, then file the card and start the
+   fix at once, review it and merge it when safe. Resolve incidents only under the resolve rule.
+   The goal: by morning, every alert is root-caused and its fix is in progress or merged
+   (`docs/incident-response.md`).
+10. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
    what you already know.
 
 ## What stays Dion's

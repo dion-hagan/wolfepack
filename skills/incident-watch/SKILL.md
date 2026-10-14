@@ -1,0 +1,59 @@
+---
+name: incident-watch
+description: Wolfe's incident response loop. Start the alert watch (every 10 minutes) and the morning report, send a read-only responder after each new incident, then file a card, build the fix, review it and merge it. Use when Dion asks Wolfe to watch alerts, or after a session restart, to re-create the watch.
+---
+
+# Incident watch
+
+Dion's goal: **when he logs in in the morning, every overnight alert has been identified and
+root-caused, and its fix is in progress or merged.** Wolfe runs this; agent sessions don't.
+The loop and its rules: `docs/incident-response.md` in the wolfepack repo.
+
+## Start it
+
+1. Check the settings: `ALERTS_TOKEN_FILE` names a file holding the alerting provider's API token
+   (`wolfepack.config.md`, keys `ALERTS_*`). Never print the token or paste it anywhere.
+2. Run `python alertwatch.py` (this skill's folder) once.
+   - The first time, mark the history as handled with `--mark`, after sending a responder to
+     anything still open that matters.
+3. Create two crons (CronCreate; both live only for the session and expire after 7 days, so
+   re-create them after a restart and tell Dion):
+   - **Watch** every 10 minutes, at off minutes (e.g. `4,14,24,34,44,54 * * * *`), with the
+     prompt in "The watch prompt" below.
+   - **Morning report** daily shortly before Dion starts (e.g. `47 7 * * *`), with the prompt
+     in "The morning report" below.
+
+## The watch prompt
+
+> Alert watch (keep it cheap). Run `python <skill dir>/alertwatch.py`.
+> - Output `quiet`, or only STILL OPEN lines already handled: one line, no action. If a STILL
+>   OPEN incident now meets the resolve rule (docs/incident-response.md), tell Dion, then resolve it.
+> - Output with NEW lines:
+>   1. Run the script again with `--mark`.
+>   2. Spawn one read-only responder per new incident (group related ones) with
+>      `agents/incident-responder-brief.md`. Use the middle model tier at high effort, or the top
+>      tier for sev1.
+>   3. Tell Dion in one line what fired and that a responder is on it. For sev1, also send a push
+>      notification.
+> - When a responder reports:
+>   - File a card (In progress) with the cause and evidence.
+>   - Spawn a builder at once. The fix must remove the root cause; more logging is not a fix.
+>   - Review it by risk and merge it when safe.
+>   - Anything that needs Dion goes to his ops board, and the PR is labelled
+>     `blocked: waiting on Dion`.
+>   - If it's only alert noise, fix the alert's definition in the repo.
+> - `ALERTWATCH READ FAILED`: retry next tick; tell Dion if it fails twice in a row.
+
+## The morning report
+
+> Morning report for Dion. Open with "Overnight incidents": one line each, giving the incident,
+> its root cause, the evidence, the fix (card, PR title, and merged / in review / building),
+> whether it was resolved, and anything he must do. Then the status table
+> (`templates/status-report.md`) and the overnight cost.
+
+## Never
+
+- Let a responder write to production, the alerting provider, or GitHub. Responders only read.
+- Pause or delete an alert, or resolve an incident outside the resolve rule.
+- Route around a permission refusal. Tell Dion the incident is eligible and let him act, or have
+  him add a narrow allow rule (docs/incident-response.md, "Permissions").

@@ -262,6 +262,10 @@ board is updated too. Never ask a peer to do something your own permissions bloc
   why that tier, and a rough cost (tokens from its completion notice times that model's current
   price; look prices up with the `claude-api` skill, never from memory). Add a total for the round.
 
+- **Morning report.** Wolfe's first report of the day opens with "Overnight incidents": each
+  alert since the last report, its root cause, its fix and status, and whether it was resolved
+  (`docs/incident-response.md`).
+
 ## 15. Models and tokens
 
 Token spend matters. Staff by the work, like hiring a junior engineer for the bug backlog and a

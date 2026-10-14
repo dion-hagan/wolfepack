@@ -28,6 +28,10 @@ and label names below, and in `CLAUDE.md`.
 | `AGENT_LIMIT` | `3` | How many card agents run at once. |
 | `BIG_DIFF_LINES` | `500` | A diff this long or longer counts as "big" for review by risk. |
 | `MIGRATION_LIST_COMMAND` | `n/a` | Optional. A command that lists schema migrations held by open PRs. `n/a` if the project has none. |
+| `ALERTS_PROVIDER` | `none` | Optional. The alerting tool the incident watch reads, e.g. `betterstack`. `none` turns the watch off. |
+| `ALERTS_TOKEN_FILE` | `<path outside every repo>` | Where the alerting API token lives, as a path only. The watch reads it through the environment variable of the same name. |
+| `ALERTS_READ_NOTES` | `<how a responder reads logs and metrics>` | Endpoints, table names and query syntax for the incident responder brief. No secrets. |
+| `MORNING_REPORT_TIME` | `07:47` | Local time of the daily morning report. |
 | `PR_TEMPLATE_PATH` | `.github/pull_request_template.md` | Where the project keeps its PR template. |
 
 ## Board lists (exact names, left to right)

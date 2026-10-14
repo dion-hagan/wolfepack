@@ -13,6 +13,14 @@ Rules:
 - Gather it from the session list, `gh pr list`, and the board's In progress, Blocked, In review
   and Ready to merge lists. Skip sessions that are not part of this project.
 
+## Overnight incidents (the morning report opens with this)
+
+| Incident | Root cause (evidence in a line) | Fix | Resolved | For Dion |
+| --- | --- | --- | --- | --- |
+| `<name, start time>` | `<cause>` | `<card / PR title: merged, in review or building>` | `<yes, at time / no: why>` | `<what he must do, or "none">` |
+
+Write "Quiet night: no incidents" when there were none.
+
 ## Template
 
 | Agent | Work | Status | Notes for Dion |

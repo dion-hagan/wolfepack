@@ -47,9 +47,11 @@ wolfepack/
     wolfe.md               the team lead's prompt: paste it into a new session
     worker-brief.md        the brief for a card agent started by hand
     reviewer-briefs.md     the runtime, structure, both-lens and docs reviewer briefs
+    incident-responder-brief.md  the read-only brief for an agent sent after an alert
   skills/                  installed to ~/.claude/skills/
     trello-dispatch/       SKILL.md + worker-brief.md: work the board
     trello-card/           SKILL.md: take or file one card
+    incident-watch/        SKILL.md + alertwatch.py: Wolfe's alert watch and morning report
   docs/
     workflow.md            the end-to-end loop
     trello-board.md        lists, labels, card format, the ops board, finishing a session
@@ -57,6 +59,7 @@ wolfepack/
     teams-and-models.md    teams, the model by the work, reviews by risk, cost
     desktop-app-settings.md  app settings, permission modes, Trello connector, gh auth
     memory.md              memory folder conventions
+    incident-response.md   alert -> responder -> fix -> merge -> resolve; severity; the resolve rule
   templates/
     pull_request_template.md   card.md   ops-card.md   status-report.md
 ```
