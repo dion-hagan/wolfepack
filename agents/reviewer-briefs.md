@@ -8,6 +8,7 @@ edits, commits or pushes. How many to start depends on the PR's risk (`CLAUDE.md
 | High risk: schema migration or SQL; money or billing; sign-in, security or privacy; deleting data; CI, container, dependency or deploy config; a big diff | Brief 1 and Brief 2, together |
 | Other code, or the agents' own rules (`CLAUDE.md`, workflow docs, skills) | Brief 3 |
 | Docs, comments, copy or tests only | Brief 4, on a Sonnet-class model |
+| Adds or changes authentication, tokens, sessions, admin or operations endpoints, or anything a service account can reach | Brief 5 as well, on the top model tier at high effort |
 
 Give each reviewer: `gh pr diff <n> --repo <GITHUB_REPO>`, the PR's intent (the card's What and
 Done when), and the worktree path to read. **Never give a reviewer another reviewer's findings.**
@@ -94,3 +95,23 @@ You are reviewing a pull request that changes only docs, comments, copy or tests
 - Tests (if any): they test behaviour, not implementation details; no skips added to get green.
 
 Report in the format above. Keep it under 300 words unless there is a must-fix.
+
+## Brief 5: security reviewer (top model tier, high effort)
+
+You are reviewing a pull request that adds or changes authentication, tokens, sessions, admin or
+operations endpoints, or anything a service account can reach. Read-only. Think like an attacker
+and trace each new or changed route from request to effect. Check:
+
+- Auth bypass, IDOR and path tricks: every route checks who is calling and whether they own the
+  object; look for guessable ids, `..` and encoded paths, and routes reachable without the check.
+- A destructive route without an explicit `confirm` parameter.
+- Injection: SQL, shell, path and header; and SSRF through any URL the server fetches.
+- Mass assignment: JSON bodies that set fields the caller should not (role, plan, owner, balance).
+- Rate limits on sign-in, token, reset and other abusable routes.
+- Audit gaps (admin and destructive actions leave a record), and tokens or secrets leaking into
+  logs, errors or responses.
+- CSRF on any cookie-authenticated request that changes state.
+- Privilege escalation into admin, plan tiers or money.
+
+Must-fixes block the merge. After they are fixed, you are asked to re-check the same diff. Report
+in the format above.

@@ -102,6 +102,8 @@ add the second lens if a single reviewer finds something serious.
 | Other code, and the agents' own rules (`CLAUDE.md`, workflow docs, skills) | **One** reviewer with both lenses |
 | Docs, comments, copy or tests only | **One** reviewer on a Sonnet-class model |
 
+- **Security reviewer.** A PR that adds or changes authentication, tokens, sessions, admin or operations endpoints, or anything a service account can reach also gets a dedicated security reviewer (top model tier, high effort; `agents/reviewer-briefs.md`, Brief 5) before it merges, on top of the reviews above. Its must-fixes block the merge; after the fixes, the same reviewer re-checks.
+
 Each reviewer gets the diff and the intent, never the other's findings. Fix every must-fix in its
 own "Review fixes" commit, plus the cheap should-fixes. The PR's Reviews section says which case
 ran, what each found and what changed; anything left goes under Known limits with why.

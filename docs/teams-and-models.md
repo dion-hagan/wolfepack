@@ -75,6 +75,7 @@ bigger one. If a single reviewer finds something serious, add the second lens.
 | A schema migration or SQL; money or billing; sign-in, security or privacy; deleting data; CI, container, dependency or deploy config; or a big diff (`BIG_DIFF_LINES` lines or more) | **Two** reviewers, one lens each, started together: runtime behaviour, and structure |
 | Other code, and the agents' own rules (`CLAUDE.md`, workflow docs, skills) | **One** reviewer with both lenses |
 | Docs, comments, copy or tests only | **One** reviewer on a Sonnet-class model |
+| Authentication, tokens, sessions, admin or operations endpoints, or anything a service account can reach | The reviews above **plus** a security reviewer (top model tier, high effort; Brief 5). Its must-fixes block the merge; the same reviewer re-checks after the fixes |
 
 Rules for every case:
 
