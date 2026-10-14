@@ -4,7 +4,7 @@ Trello: <!-- the card's link, or "none". This PR's status label moves the card. 
 
 ## What changes
 
-<!-- What a user, an admin or Dion will see or do differently, in plain words. Then the how, briefly:
+<!-- What a user, an admin or <MANAGER_NAME> will see or do differently, in plain words. Then the how, briefly:
 the files that matter and why. Stacked on another PR? Say which. -->
 
 ## Checklist
@@ -24,7 +24,7 @@ the files that matter and why. Stacked on another PR? Say which. -->
 
 ## Deploy
 
-<!-- Migration number, new env vars, config changes, and anything Dion does before or after the
+<!-- Migration number, new env vars, config changes, and anything <MANAGER_NAME> does before or after the
 merge (merging to the main branch may deploy). "No migration, no new env vars." is a fine answer. -->
 
 ## Screenshots

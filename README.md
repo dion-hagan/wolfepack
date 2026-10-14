@@ -2,7 +2,7 @@
 
 Named in homage to Wolfe, the guy who taught me how to be a real engineer.
 
-Dion Hagan's personal, centralized Claude Code agent setup. It is a small **team of agents** that
+A personal, centralized Claude Code agent setup. It is a small **team of agents** that
 works through a Trello kanban board, opens pull requests, and merges them itself when they are safe.
 Everything a new computer needs is in this repo, so it can be picked up in minutes.
 
@@ -11,23 +11,23 @@ of Trello boards by filling in one config file.
 
 ## The idea
 
-- **Dion is the manager.** He sets goals, reports bugs in his own words, and answers the few
-  questions only he can (money, accounts, secrets, pricing, legal).
+- **<MANAGER_NAME> is the manager.** They set goals, report bugs in their own words, and answer the few
+  questions only they can (money, accounts, secrets, pricing, legal).
 - **Wolfe is the team lead.** Wolfe is a long-running Claude session. He staffs agents, runs the
   board, runs the reviews, drives merges and reports back with a status table. His calls are final
-  unless Dion overrules them.
+  unless <MANAGER_NAME> overrules them.
 - **Agents** each take one Trello card, work in their own git worktree, open a PR, and merge it
   themselves once it passes the safe-to-merge checklist.
 - **Reviewers** are read-only agents. How many look at a PR depends on its risk.
-- **Trello** is where work waits and where Dion can see it move. A second, private board holds the
-  manual steps only he can do.
+- **Trello** is where work waits and where <MANAGER_NAME> can see it move. A second, private board holds the
+  manual steps only they can do.
 - **The cheapest model that fits** does each job, and Wolfe reports the evidence and a rough cost.
 
 ## Roles
 
 | Role | Who | Reads | Writes |
 | --- | --- | --- | --- |
-| Manager | Dion | status tables, the boards | his list on the board, answers in chat |
+| Manager | <MANAGER_NAME> | status tables, the boards | their list on the board, answers in chat |
 | Team lead | Wolfe (`agents/wolfe.md`) | everything | board moves, comments, reviews, merges, reports. No feature code |
 | Card agent | one background session per card (`agents/worker-brief.md`) | its card, the repo | one branch, one PR |
 | Reviewer | read-only agents (`agents/reviewer-briefs.md`) | one diff | one report |
@@ -60,7 +60,7 @@ wolfepack/
     desktop-app-settings.md  app settings, permission modes, Trello connector, gh auth
     memory.md              memory folder conventions
     incident-response.md   alert -> responder -> fix -> merge -> resolve; severity; the resolve rule; scaling
-    absence-mode.md        a trial: full operating permissions while Dion is away, with guardrails
+    absence-mode.md        a trial: full operating permissions while <MANAGER_NAME> is away, with guardrails
   templates/
     pull_request_template.md   card.md   ops-card.md   status-report.md
 ```
@@ -156,7 +156,7 @@ the project says how the code builds.
   `settings.json`.
 - Agents never touch production, push to the main branch, force-push, or merge a PR that fails the
   checklist. Merges use `--squash --match-head-commit`, never `--admin` or `--auto`.
-- Dion's own cards and notes are never rewritten; agents comment beside them.
+- <MANAGER_NAME>'s own cards and notes are never rewritten; agents comment beside them.
 
 ## License
 

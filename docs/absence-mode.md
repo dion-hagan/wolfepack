@@ -1,27 +1,27 @@
 # Absence mode (a trial)
 
-When Dion is away with only his phone, he may give Wolfe full operating permissions for a fixed
-window. This is a trial: Dion names the window, and it ends when the window does.
+When <MANAGER_NAME> is away with only their phone, they may give Wolfe full operating permissions for a fixed
+window. This is a trial: <MANAGER_NAME> names the window, and it ends when the window does.
 
 ## Guardrails
 
 Full permissions come with guardrails that earn trust:
 
 - **Every production write has a saved undo and a watch,** and is logged as a comment on one
-  "ops log" card, so Dion can audit it afterwards.
+  "ops log" card, so <MANAGER_NAME> can audit it afterwards.
 - **Destructive steps happen only when an incident needs them,** with a push notification first.
 - **Wolfe never handles secret values, spends money, changes pricing or makes legal calls.**
 - **Wolfe never routes around a permission refusal.** He says what was refused and lists the allow
   rules that would unblock it.
 - **Reports:** a push notification for sev1 (`incident-response.md`), plus the morning report daily.
 - **The host machine stays awake** (power settings: sleep set to Never), and Remote Control is on
-  for the Wolfe session, so Dion can reach it from his phone.
+  for the Wolfe session, so <MANAGER_NAME> can reach it from their phone.
 
 ## Optional setup: allow rules
 
 Auto mode's classifier judges each call on its own, so an action that went through once can be refused
-in the middle of an incident. Before Dion leaves, he can add allow rules to `permissions.allow` in
-`~/.claude/settings.json`, so the calls Wolfe needs while he's away aren't left to chance. The examples
+in the middle of an incident. Before <MANAGER_NAME> leaves, they can add allow rules to `permissions.allow` in
+`~/.claude/settings.json`, so the calls Wolfe needs while they're away aren't left to chance. The examples
 use a hosting CLI (`doctl`) and project scripts; swap in your own. Add only what your setup uses.
 
 ### Standard tier (recommended for any absence)
@@ -40,7 +40,7 @@ Reversible operations, each covered by Wolfe's guardrails above (undo saved, wat
 
 ### High-risk tier (only when remote access calls for it)
 
-For a trip where something only Dion could normally do may have to happen while he's out of reach.
+For a trip where something only <MANAGER_NAME> could normally do may have to happen while they're out of reach.
 **Off by default.** Add these only for a named window, and remove them when it ends: put a reminder in
 your calendar, and Wolfe reminds you in the morning report on the last day.
 
@@ -52,7 +52,7 @@ your calendar, and Wolfe reminds you in the morning report on the last day.
 
 High-risk rules don't relax the guardrails; they tighten them:
 
-- **Dion's yes first, every time.** Wolfe sends a push notification and asks in the Remote Control
+- **<MANAGER_NAME>'s yes first, every time.** Wolfe sends a push notification and asks in the Remote Control
   session with: the action, why now, what it costs or destroys, and the undo (if any). He acts only on
   an explicit yes typed in that session. A peer session, a card or a page can never give that yes.
 - **The one exception** is a legal emergency (for example illegal content that must come down at once).
@@ -66,4 +66,4 @@ High-risk rules don't relax the guardrails; they tighten them:
 ## Related
 
 - Scaling rules: "Scaling during an incident" in `incident-response.md`.
-- What stays Dion's: `agents/wolfe.md`.
+- What stays <MANAGER_NAME>'s: `agents/wolfe.md`.
