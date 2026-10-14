@@ -1,5 +1,7 @@
 # wolfepack
 
+Named in homage to Wolfe, the guy who taught me how to be a real engineer.
+
 Dion Hagan's personal, centralized Claude Code agent setup. It is a small **team of agents** that
 works through a Trello kanban board, opens pull requests, and merges them itself when they are safe.
 Everything a new computer needs is in this repo, so it can be picked up in minutes.
