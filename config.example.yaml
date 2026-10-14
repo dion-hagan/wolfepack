@@ -1,0 +1,123 @@
+# wolfepack config
+#
+# The one file you fill in. The docs, skills and agent prompts write these values as <KEY>
+# (for example <MANAGER_NAME>, <BOARD_URL>); agents read them from here whenever they need one.
+#
+# Where it lives: install.sh / install.ps1 copy this file to ~/.claude/wolfepack.config.yaml if you
+# don't have one yet (they never overwrite it). A project can override it with its own
+# wolfepack.config.yaml in the repo root: the project's file wins, key by key.
+#
+# Never put a secret here: no keys, tokens or passwords. Paths to secret files are fine.
+# wolfepack.config.yaml is git-ignored in this repo, so a filled-in copy is not published by accident.
+#
+# Forking this setup? Set MANAGER_NAME to your own name. List and label names that use it
+# ("<MANAGER_NAME>'s reports", "From <MANAGER_NAME>", "blocked: waiting on <MANAGER_NAME>")
+# follow automatically; name them that way on your boards. No doc needs editing.
+
+# --- People ------------------------------------------------------------------------------------
+
+# The person the team reports to: approves what only a human may, owns the ops board and their
+# own report list.
+MANAGER_NAME: Dion
+
+# The team lead session's title.
+TEAM_LEAD_NAME: Wolfe
+
+# --- Project -----------------------------------------------------------------------------------
+
+# The project repository, used in every `gh ... --repo` command.
+GITHUB_REPO: <OWNER>/<REPO>
+
+# The branch that merges deploy from.
+MAIN_BRANCH: main
+
+# Branches are <BRANCH_PREFIX>/<slug>, one per card.
+BRANCH_PREFIX: agent
+
+# The one command that runs everything CI runs. Run before every PR (e.g. "make check").
+CI_COMMAND: <the one command that runs everything CI runs>
+
+# Where the project keeps its PR template.
+PR_TEMPLATE_PATH: .github/pull_request_template.md
+
+# Optional: a command that lists schema migrations held by open PRs. "n/a" if the project has none.
+MIGRATION_LIST_COMMAND: n/a
+
+# --- Boards ------------------------------------------------------------------------------------
+
+# The agent kanban board (Trello).
+BOARD_URL: <BOARD_URL>
+
+# The manager's own board for manual ops steps.
+OPS_BOARD_URL: <OPS_BOARD_URL>
+
+# --- Team size and review --------------------------------------------------------------------
+
+# How many card agents run at once.
+AGENT_LIMIT: 3
+
+# A diff this long or longer counts as "big" for review by risk.
+BIG_DIFF_LINES: 500
+
+# --- Alerts and incidents (optional) ----------------------------------------------------------
+
+# The alerting tool the incident watch reads, e.g. betterstack. "none" turns the watch off.
+ALERTS_PROVIDER: none
+
+# Where the alerting API token lives, as a path only (never the token). The watch reads it
+# through the environment variable of the same name.
+ALERTS_TOKEN_FILE: <path outside every repo>
+
+# How an incident responder reads logs and metrics: endpoints, table names, query syntax.
+# No secrets. A multi-line value is fine:
+ALERTS_READ_NOTES: |
+  <how a responder reads logs and metrics>
+
+# Local time of the daily morning report.
+MORNING_REPORT_TIME: "07:47"
+
+# --- Board lists (exact names, left to right) -----------------------------------------------
+
+BOARD_LISTS:
+  - name: <MANAGER_NAME>'s reports
+    meaning: The manager's own bugs and ideas, in their words.
+  - name: Inbox
+    meaning: Found by an agent, not yet agreed.
+  - name: Ready
+    meaning: Agreed and clear. The top card is next.
+  - name: In progress
+    meaning: An agent has it.
+  - name: Blocked
+    meaning: Waits on the manager.
+  - name: In review
+    meaning: A PR is open.
+  - name: Needs testing
+    meaning: The manager tries it on a device.
+  - name: Ready to merge
+    meaning: Labelled "ready to merge".
+  - name: Done
+    meaning: Merged.
+
+OPS_BOARD_LISTS: [To do, Waiting, Done]
+
+# --- Labels ------------------------------------------------------------------------------------
+
+# Board labels: name them by hand; agents also match them by colour.
+BOARD_LABELS:
+  Bug: red
+  Feature: green
+  Tech debt: purple
+  Docs: blue
+  Needs decision: orange
+  From <MANAGER_NAME>: yellow
+
+# GitHub PR labels. Create them once with the commands in docs/merging.md, "Create the labels".
+PR_LABELS:
+  - work in progress
+  - "blocked: waiting on <MANAGER_NAME>"
+  - "blocked: external"
+  - needs update
+  - stacked
+  - needs review
+  - needs testing
+  - ready to merge

@@ -60,7 +60,7 @@ Responders never need write access.
 
 ## Settings
 
-The `ALERTS_*` keys in `wolfepack.config.md`: the provider, where the token file lives (the path
+The `ALERTS_*` keys in `wolfepack.config.yaml`: the provider, where the token file lives (the path
 only, never the token), and the notes a responder needs to read logs and metrics. The token file
 stays outside every repository.
 

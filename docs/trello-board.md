@@ -2,7 +2,7 @@
 
 Two boards. The **agent board** (`<BOARD_URL>`) is where work waits and where you can see it move.
 The **ops board** (`<OPS_BOARD_URL>`) is <MANAGER_NAME>'s own list of manual steps. Both URLs live in
-`wolfepack.config.md`.
+`wolfepack.config.yaml`.
 
 The board shows PR state; **the PR's status label is the truth** (`merging.md`). Questions go on
 the card and in chat. Device tests and merges are not tracked as tasks: the labels show them.

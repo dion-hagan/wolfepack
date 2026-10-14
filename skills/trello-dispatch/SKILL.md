@@ -10,8 +10,9 @@ You coordinate; the agents build. Write no code in this session, and edit nothin
 worktree. Run from a checkout that is up to date with the remote main branch.
 
 **Values.** Every `<ANGLE_CAPS>` name below (`<GITHUB_REPO>`, `<BOARD_URL>`, `<OPS_BOARD_URL>`,
-`<MAIN_BRANCH>`, `<BRANCH_PREFIX>`, `<AGENT_LIMIT>`...) is a key in `wolfepack.config.md`: read
-`./wolfepack.config.md` if the project has one, else `~/.claude/wolfepack.config.md`. If a value is
+`<MAIN_BRANCH>`, `<BRANCH_PREFIX>`, `<AGENT_LIMIT>`...) is a key in `wolfepack.config.yaml`: read
+`./wolfepack.config.yaml` if the project has one, else `~/.claude/wolfepack.config.yaml` (an older install may still have `wolfepack.config.md`: read that if no `.yaml` exists, and suggest
+moving to the YAML file). If a value is
 still a placeholder, stop and ask <MANAGER_NAME> to fill it in. Read `~/.claude/CLAUDE.md` once at the start:
 it holds the merge, review, label and card rules this skill applies.
 

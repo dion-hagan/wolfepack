@@ -2,7 +2,7 @@
 # Installs the wolfepack setup into ~/.claude:
 #   CLAUDE.md          -> ~/.claude/CLAUDE.md            (an existing, different one is backed up first)
 #   skills/*           -> ~/.claude/skills/*             (an existing, different one is backed up first)
-#   config.example.md  -> ~/.claude/wolfepack.config.md  (only if you have none; never overwritten)
+#   config.example.yaml  -> ~/.claude/wolfepack.config.yaml  (only if you have none; never overwritten)
 #
 # Safe to run again: unchanged files are left alone, nothing is deleted, and it never writes
 # settings.json or any secret.
@@ -80,15 +80,15 @@ for dir in "$SRC"/skills/*/; do
 done
 
 # 3. config (never overwritten)
-if [ -f "$DEST/wolfepack.config.md" ]; then
-  say "wolfepack.config.md: exists; left alone"
+if [ -f "$DEST/wolfepack.config.yaml" ]; then
+  say "wolfepack.config.yaml: exists; left alone"
 else
-  say "wolfepack.config.md: installing the example; fill it in"
-  act cp "$SRC/config.example.md" "$DEST/wolfepack.config.md"
+  say "wolfepack.config.yaml: installing the example; fill it in"
+  act cp "$SRC/config.example.yaml" "$DEST/wolfepack.config.yaml"
 fi
 
 say ""
 say "Done. Next steps:"
-say "  1. Edit $DEST/wolfepack.config.md and replace every <PLACEHOLDER>."
+say "  1. Edit $DEST/wolfepack.config.yaml and replace every <PLACEHOLDER>."
 say "  2. Set the desktop app settings in docs/desktop-app-settings.md."
 say "  3. Start a session and paste agents/wolfe.md."

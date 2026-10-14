@@ -6,7 +6,7 @@ facts for that project; where the two differ on a project fact, the project wins
 on how we work together, this file wins.
 
 The values in angle brackets (`<GITHUB_REPO>`, `<BOARD_URL>`, `<MAIN_BRANCH>`, `<CI_COMMAND>`...)
-are in `~/.claude/wolfepack.config.md`, or `wolfepack.config.md` in the project root, which wins.
+are in `~/.claude/wolfepack.config.yaml`, or `wolfepack.config.yaml` in the project root, which wins.
 **If neither file exists, the project is not set up for the team workflow:** skip the Trello,
 label and self-merge sections, and keep the rest (reporting, shell pitfalls, memory).
 
@@ -330,3 +330,11 @@ conventions: `docs/memory.md`.
   `CLAUDE.md` says you may and how.
 - Put a secret in a repo, a card, a PR, a comment or memory.
 - Turn app auto-archive back on unasked, or route around a refusal from the permission system.
+
+## 19. Configuration a human edits
+
+Anything meant for a person to fill in or change by hand is a **YAML file with comments**: one key
+per value, a comment above each saying what it is, and sensible defaults. Never a markdown table and
+never JSON for hand editing. Agents read the YAML directly. Add a generator only when a tool can't
+take YAML, and then the YAML stays the one source of truth, with the generated file marked as
+generated and git-ignored or regenerated in CI. Secrets never go in it: a path to a secret file is fine.

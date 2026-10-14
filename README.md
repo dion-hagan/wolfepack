@@ -39,7 +39,7 @@ of Trello boards by filling in one config file.
 wolfepack/
   README.md                this file
   CLAUDE.md                the global rules; installed to ~/.claude/CLAUDE.md
-  config.example.md        the placeholders you fill in (repo, boards, list names, check command)
+  config.example.yaml        the placeholders you fill in (repo, boards, list names, check command)
   install.sh               install on macOS / Linux / Git Bash
   install.ps1              install on Windows PowerShell
   LICENSE                  MIT
@@ -110,7 +110,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 Add `-DryRun` (PowerShell) or `--dry-run` (bash) first to see what it would do. Running it again is
 safe.
 
-**5. Fill in the config (3 min).** Open `~/.claude/wolfepack.config.md` and replace every
+**5. Fill in the config (3 min).** Open `~/.claude/wolfepack.config.yaml` and replace every
 `<PLACEHOLDER>`: `<OWNER>/<REPO>`, `<BOARD_URL>`, `<OPS_BOARD_URL>`, the check command. You will
 have the board URLs after step 6, so do the rest now and come back.
 
@@ -141,7 +141,7 @@ If something is off, run the checklist at the end of `docs/desktop-app-settings.
 
 Pull this repo and run the installer again. Changed files are backed up
 (`CLAUDE.md.bak-<time>`, `skills-backup-<time>/`) and unchanged files are skipped. Your
-`wolfepack.config.md` is never overwritten.
+`wolfepack.config.yaml` is never overwritten.
 
 ## Using it in a project
 

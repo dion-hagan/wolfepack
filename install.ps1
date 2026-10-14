@@ -1,7 +1,7 @@
 # Installs the wolfepack setup into ~\.claude (Windows PowerShell 5.1 or PowerShell 7):
 #   CLAUDE.md          -> ~\.claude\CLAUDE.md            (an existing, different one is backed up first)
 #   skills\*           -> ~\.claude\skills\*             (an existing, different one is backed up first)
-#   config.example.md  -> ~\.claude\wolfepack.config.md  (only if you have none; never overwritten)
+#   config.example.yaml  -> ~\.claude\wolfepack.config.yaml  (only if you have none; never overwritten)
 #
 # Safe to run again: unchanged files are left alone, nothing is deleted, and it never writes
 # settings.json or any secret.
@@ -84,12 +84,12 @@ foreach ($dir in Get-ChildItem -Path (Join-Path $Src 'skills') -Directory) {
 }
 
 # 3. config (never overwritten)
-$dstConfig = Join-Path $Dest 'wolfepack.config.md'
+$dstConfig = Join-Path $Dest 'wolfepack.config.yaml'
 if (Test-Path $dstConfig) {
-    Say 'wolfepack.config.md: exists; left alone'
+    Say 'wolfepack.config.yaml: exists; left alone'
 } else {
-    Say 'wolfepack.config.md: installing the example; fill it in'
-    Act { Copy-Item -Path (Join-Path $Src 'config.example.md') -Destination $dstConfig } "copy config"
+    Say 'wolfepack.config.yaml: installing the example; fill it in'
+    Act { Copy-Item -Path (Join-Path $Src 'config.example.yaml') -Destination $dstConfig } "copy config"
 }
 
 Say ''

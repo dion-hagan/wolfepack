@@ -12,7 +12,7 @@ The loop and its rules: `docs/incident-response.md` in the wolfepack repo.
 ## Start it
 
 1. Check the settings: `ALERTS_TOKEN_FILE` names a file holding the alerting provider's API token
-   (`wolfepack.config.md`, keys `ALERTS_*`). Never print the token or paste it anywhere.
+   (`wolfepack.config.yaml`, keys `ALERTS_*`). Never print the token or paste it anywhere.
 2. Run `python alertwatch.py` (this skill's folder) once.
    - The first time, mark the history as handled with `--mark`, after sending a responder to
      anything still open that matters.

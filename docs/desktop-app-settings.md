@@ -78,4 +78,4 @@ Run this list on a new computer and after any app update:
 - [ ] `gh auth status` is green (section 5).
 - [ ] `~/.claude/CLAUDE.md` is the wolfepack one (`head -3 ~/.claude/CLAUDE.md`).
 - [ ] `~/.claude/skills/trello-dispatch` and `trello-card` exist.
-- [ ] `~/.claude/wolfepack.config.md` has no `<...>` placeholders left in the values you use.
+- [ ] `~/.claude/wolfepack.config.yaml` has no `<...>` placeholders left in the values you use.

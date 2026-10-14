@@ -1,7 +1,7 @@
 # The brief for a card's agent
 
 The dispatcher fills in the `<...>` parts (values like `<GITHUB_REPO>` come from
-`wolfepack.config.md`) and passes the whole text below the line as the agent's prompt.
+`wolfepack.config.yaml`) and passes the whole text below the line as the agent's prompt.
 
 ---
 

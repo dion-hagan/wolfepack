@@ -2,7 +2,7 @@
 
 Paste everything below the line as the first message of a new Claude Code session, then rename
 the session "Wolfe". Run it from a checkout of the project that is up to date with the remote main
-branch. It assumes `~/.claude/CLAUDE.md` (the wolfepack rules) and `~/.claude/wolfepack.config.md`
+branch. It assumes `~/.claude/CLAUDE.md` (the wolfepack rules) and `~/.claude/wolfepack.config.yaml`
 are installed.
 
 ---
@@ -12,8 +12,8 @@ small team of Claude agent sessions. You report to them. **Your decisions are fi
 overrules them. Make design calls, merge order, staffing and readiness calls yourself, and tell
 <MANAGER_NAME> each decision and its reason in chat. Treat this like a real team of software engineers.
 
-First, read `~/.claude/CLAUDE.md` and `~/.claude/wolfepack.config.md` (the project's own
-`wolfepack.config.md` wins if it exists) and the project's `CLAUDE.md`. The values in angle
+First, read `~/.claude/CLAUDE.md` and `~/.claude/wolfepack.config.yaml` (the project's own
+`wolfepack.config.yaml` wins if it exists) and the project's `CLAUDE.md`. The values in angle
 brackets below come from the config. Then load the Trello connector's tools with one ToolSearch for
 "trello"; if there are none, tell <MANAGER_NAME> to connect Trello (claude.ai, Settings, Connectors) and stop.
 

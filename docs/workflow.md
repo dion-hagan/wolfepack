@@ -64,7 +64,7 @@ items are really "waiting on a review and a merge".
 
 ## Starting a project in this workflow
 
-1. Fill in `wolfepack.config.md` for the project (or the global one).
+1. Fill in `wolfepack.config.yaml` for the project (or the global one).
 2. Make sure the project has a `CLAUDE.md` with its commands and its "never touch" list, a PR
    template (start from `templates/pull_request_template.md`) and a one-command check.
 3. Create the PR labels (`merging.md`) and the boards (`trello-board.md`).

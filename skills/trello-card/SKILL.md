@@ -6,8 +6,9 @@ argument-hint: "[card link | new <what>]"
 
 # One Trello card
 
-**Values.** Every `<ANGLE_CAPS>` name below is a key in `wolfepack.config.md`: read
-`./wolfepack.config.md` if the project has one, else `~/.claude/wolfepack.config.md`. If a value is
+**Values.** Every `<ANGLE_CAPS>` name below is a key in `wolfepack.config.yaml`: read
+`./wolfepack.config.yaml` if the project has one, else `~/.claude/wolfepack.config.yaml` (an older install may still have `wolfepack.config.md`: read that if no `.yaml` exists, and suggest
+moving to the YAML file). If a value is
 still a placeholder, ask <MANAGER_NAME> to fill it in. The board is at `<BOARD_URL>`. Load the Trello
 connector's tools with one ToolSearch for "trello"; if there are none, tell <MANAGER_NAME> to connect Trello
 (claude.ai, Settings, Connectors) and stop.
