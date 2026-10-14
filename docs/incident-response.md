@@ -89,5 +89,23 @@ limits, and only when an incident or a clear capacity signal calls for it. No sp
 - **Check before adding instances of a worker.** Read its loops for single-instance assumptions
   (sweeps that would double-send or double-sync). When a loop is busy and unsafe to duplicate,
   split it into its own component instead.
-- **Stays Dion's:** database resizes, DNS and secrets.
+- **Vertical sizing, the database included,** is Wolfe's when Dion has delegated it. Before any
+  resize, write a decision record on the ops log card: the signal (with numbers), the options
+  weighed, cost per month, the risk (a resize can mean a short failover), why this option, and the
+  plan to size back down. A decision Wolfe can defend if things go wrong.
+- **Measure before you resize.** If the database reports no health numbers (size, connections,
+  longest query, cache hit), add that telemetry first; never resize on a guess.
+- **Stays Dion's:** new databases or other services, DNS and secrets.
 - **When Dion is away, uptime comes before cost.**
+
+## Smart pruning
+
+Before resizing for size or bloat, consider pruning, as long as users barely notice.
+
+- **Fair game:** operational exhaust. Expired sessions and used one-time links, finished job and
+  status rows, caches that can be recomputed, dead tuples (vacuum). Raw event logs whose sums are
+  already kept elsewhere, only when the sums keep everything users see.
+- **Never:** anything that removes a user's content, audio or engagement (their uploads, likes,
+  comments, saves, playlists, follows, or the history that drives what they see).
+- **How:** a dry run with row counts first, an undo where possible, batches so no big table is
+  locked for long, and a line on the ops log card.

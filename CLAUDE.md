@@ -250,10 +250,10 @@ then message **every running agent session** with the outcome (`SendMessage`), s
 unrelated ones. Update memory and the wolfepack docs. Whenever a to-do list is updated, the Trello
 board is updated too. Never ask a peer to do something your own permissions blocked.
 
-- **Mirror agreed rules to wolfepack.** When a new workflow rule is agreed, Wolfe spawns one light
-  agent (a mid-tier model at low effort; the smallest tier only for purely mechanical edits, because
-  a missed scrub on a public repo is costly). The agent generalises the rule, edits wolfepack,
-  scrubs it, commits and pushes.
+- **Mirror agreed rules to wolfepack.** Wolfe owns the wolfepack repo. When a new workflow rule is
+  agreed, Wolfe mirrors it himself: generalise it (no project names, domains or ids), edit the
+  right doc, scrub, commit and push. Only when he is busy with other work does a light agent
+  (a mid-tier model at low effort) do it in parallel.
 
 ## 14. Reports to Dion
 
