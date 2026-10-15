@@ -72,7 +72,7 @@ operating system is `docs/management-system.md`.
 - conflicts between parallel streams keep forcing rebuilds;
 - the human wants to see work by team at a glance.
 
-**Setup:** everything in Manager, plus, for each new team (always, all four):
+**Setup:** everything in Manager, plus, for each new team (always, all of these):
 1. a clever, relevant team name;
 2. a coloured `team: <Name>` PR label;
 3. a board "Team <Name>" with lists Backlog, Ready, In progress, In review, Done;
@@ -80,6 +80,8 @@ operating system is `docs/management-system.md`.
    OKRs for the cycle;
 5. a human name for the manager that matches the team's theme (a night-watch team's manager might
    be a raven-themed name), used to sign reports and card comments.
+6. the manager then chooses its own personality and speaks in it (voice only: the facts and the
+   PR text stay plain).
 
 **Rituals:**
 - managers send milestone hand-backs (their "one-on-ones");
