@@ -69,7 +69,37 @@ wolfepack/
     pull_request_template.md   card.md   ops-card.md   status-report.md
 ```
 
-## New computer in 15 minutes
+## Quick start: the bare minimum (5 minutes)
+
+You need Git and the Claude desktop app (with Claude Code), signed in.
+
+```
+git clone https://github.com/dion-hagan/wolfepack.git ~/code/wolfepack
+cd ~/code/wolfepack
+./install.sh          # Windows PowerShell: powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+Then open a Claude Code session in your project folder, paste all of `agents/wolfe.md` below its
+line, and rename the session **Wolfe**. That's it: the global rules are installed and Wolfe runs
+your work from chat.
+
+**What the bare minimum doesn't give you** (each is a step in the full setup below):
+
+- **No board, so no queue.** Without the Trello boards and connector, `/trello-dispatch` and
+  `/trello-card` don't work. You hand Wolfe work in chat, and nothing tracks it between sessions
+  except his memory.
+- **No self-merging.** Agents merge only when CI is green and the PR carries the `ready to merge`
+  label. Without a CI workflow and the eight labels, every PR waits for you to merge it.
+- **Placeholders stay placeholders.** `~/.claude/wolfepack.config.yaml` still holds `<OWNER>/<REPO>`
+  and the board URLs, so anything that reads them (the skills, the ops board) won't find them.
+- **No ops board.** Manual steps meant for you (keys, console settings) are mentioned in chat
+  instead of filed where you'll see them later.
+- **Default app settings.** Sessions may auto-archive when their PR closes, and auto mode may
+  refuse merges and card moves. `docs/desktop-app-settings.md` has the fixes.
+- **No GitHub CLI login.** Without `gh auth login`, agents can't open, check or merge PRs at all.
+  Most projects will want at least this step.
+
+## Full setup: a new computer in 15 minutes
 
 Windows, macOS and Linux all work. Commands that differ are shown for both.
 
