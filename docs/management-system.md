@@ -78,6 +78,17 @@ Director spends attention where it multiplies:
 
 ## 4. Meetings as messages
 
+**Cadence is event-driven, and each manager owns their own.** Humans hold daily standups because
+they need a clock to sync. Agents are fast and don't, so they sync when there's something to sync.
+- **Inside a team:** the manager decides how and when to check in with their builders and
+  reviewers, posts that cadence on the team board, and changes it whenever it stops fitting.
+- **Manager to Director:** at milestones (a PR opened or merged, blocked, a decision needed), plus a
+  pulse after a quiet stretch whose length the manager chooses. No fixed schedule.
+- **Director across teams:** a staff sync only when triggered: two teams heading for the same
+  shared seam, or a decision that touches more than one team.
+- **Director to CEO:** the morning report daily and the operation review weekly. These are the only
+  clock-based meetings, because they follow the human's day.
+
 Agents have no meetings, but the same two kinds of contact exist:
 
 - **Process-oriented, on a cadence.**

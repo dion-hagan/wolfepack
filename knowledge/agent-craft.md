@@ -51,3 +51,10 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
 - Seen: moving a card from one board to another failed through the board connector.
 - Now: team boards hold link cards pointing to the main-board card; new work is filed straight on
   the team board.
+
+### Scrub before you commit to a public repo: a non-empty grep is a hard stop
+- Seen: a project-specific brief was copied into the public setup repo, the generic rewrite failed
+  (a file-state error), and `git add -A` committed and pushed the copy. It was fixed minutes later,
+  but it stayed in the public history.
+- Now: run the scrub grep BEFORE `git add`; any hit stops the commit. Write new generic files fresh
+  rather than copying project files and editing them down.

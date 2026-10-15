@@ -135,3 +135,25 @@ struggling team gets restructured.
 - **Interruptions:** cut them with batching, standard answers and scheduled office hours.
 **For us:** the Director keeps 4–8 direct reports, and managers absorb their builders' hand-backs.
 The CEO hears from us in the morning report and the weekly review, not in a constant stream.
+
+## Applied, cycle 1 (field notes)
+
+### WIP limits in practice
+- Seen: one team had 3 PRs in review plus 3 builders running when it proposed starting a new
+  feature.
+- Now: held until it's down to 3 open PRs. Grove's point that work in progress spoils held up:
+  every extra open PR meant more re-syncs, CI reruns and conflicts.
+
+### Variable inspection applied to merging
+- Seen: with four teams merging, main moved during almost every 10-minute CI run, so PRs kept
+  re-syncing and starved.
+- Now (a trial): a PR may merge without re-syncing when CI is green on its head and the commits it's
+  behind by touch none of its files, add no migration, aren't reverts, and avoid the shared seams.
+  The merger watches main's post-merge CI and reverts within 15 minutes if it goes red. The gate
+  stays where clashes actually happened; everything else is monitored. Measure: post-merge red
+  rate, with an early stop above 5%.
+
+### Cadence: event-driven, owned by the manager
+- Humans hold daily standups because they need a clock. Agents don't: each manager picks their own
+  team's cadence and posts it, and reports to the Director on events plus a self-chosen quiet-stretch
+  pulse. Only the human-facing meetings (the morning report, the weekly review) run on a clock.

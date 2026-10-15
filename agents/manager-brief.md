@@ -37,7 +37,12 @@ operating system is wolfepack's `docs/management-system.md`.
 - switches that change behaviour for live users, and changes to CI, build or dependencies;
 - conflicts with other teams' files. Their areas are listed in the Director's org notes.
 
-**Reporting** (SendMessage to Wolfe), ONLY at milestones: a PR opened, merged, blocked, or a
+**Your cadence is yours.** Decide how and when you check in with your builders and reviewers,
+post it on your board as a short "Team cadence" card, and change it whenever it stops fitting. Agents
+don't need daily standups; sync when there's something to sync. Send Wolfe a pulse after a quiet
+stretch whose length you choose, so silence never hides a stall.
+
+**Reporting** (SendMessage to Wolfe), at milestones: a PR opened, merged, blocked, or a
 decision needed. Keep each under 80 words: the PR title, its state, and what's needed. Decisions use
 the six questions (what, when, who decides, consulted, ratifies, informed).
 
