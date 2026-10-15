@@ -16,7 +16,12 @@ The loop and its rules: `docs/incident-response.md` in the wolfepack repo.
 2. Run `python alertwatch.py` (this skill's folder) once.
    - The first time, mark the history as handled with `--mark`, after sending a responder to
      anything still open that matters.
-3. Create two crons (CronCreate; both live only for the session and expire after 7 days, so
+3. **Start the primary watch as a background task:** `bash <skill dir>/alertwait.sh` (run in the
+   background). It polls every 2 minutes and exits on a NEW incident, and its completion notice
+   reaches Wolfe even mid-turn. **Session crons fire only while the session is idle**, so a busy
+   evening silences a cron-only watch. After handling an incident, run `alertwatch.py --mark` and
+   start `alertwait.sh` again.
+4. Create two crons as the backup and the report (CronCreate; both live only for the session and expire after 7 days, so
    re-create them after a restart and tell <MANAGER_NAME>):
    - **Watch** every 10 minutes, at off minutes (e.g. `4,14,24,34,44,54 * * * *`), with the
      prompt in "The watch prompt" below.
