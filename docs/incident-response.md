@@ -113,3 +113,15 @@ Before resizing for size or bloat, consider pruning, as long as users barely not
   comments, saves, playlists, follows, or the history that drives what they see).
 - **How:** a dry run with row counts first, an undo where possible, batches so no big table is
   locked for long, and a line on the ops log card.
+
+## Postmortems go where the human reads offline
+
+Every resolved incident gets a short postmortem, uploaded the moment it's resolved to the human's offline reading folder (a synced cloud folder they mark "available offline"), under `Postmortems/`, named `YYYY-MM-DD <incident title>`. Plain words, phone-readable, and readable without the codebase:
+- what users saw;
+- the timeline;
+- the root cause;
+- the fix (the PR);
+- what changed so it doesn't recur;
+- the cost;
+- one line of open questions.
+Link it from the ops log and the morning report. If the folder isn't connected yet, keep the files locally and upload them in one batch once it is. Longer plans and reports from team managers go to the same folder, in their own subfolders.
