@@ -97,6 +97,23 @@ operating system is `docs/management-system.md`.
   - more than about 4 cards are in flight at once;
   - two streams keep touching the same files;
   - the human asks for per-team visibility.
-- **Moving back down:** a team's work is finished (archive its manager and keep its board for
-  history); the budget tightens; or most remaining work touches one area (merge the teams).
+- **Moving back down:** a team's work is finished (hold its wrap party, below, then archive its manager and keep its
+  board for history); the budget tightens; or most remaining work touches one area (merge the teams).
   Structure should follow the work.
+
+## Forming and dissolving teams
+
+**Forming.** The Director names the team *and* its manager (a human name matching the team's
+theme), creates the label and the board, briefs the manager, and sets the cycle's OKRs.
+
+**Dissolving: the wrap party 🍾.** When a team's work is done, celebrate it before archiving:
+1. the manager sends a final report: PRs merged, OKR scores, wall time, cost, defects caught, and
+   one lesson;
+2. the Director posts a "🍾 Wrap party: Team <Name>" card in Done on the company board: a
+   highlights reel (the biggest wins by PR title, the best save, the numbers) and a thank-you to the
+   manager by name;
+3. the lesson goes into `knowledge/`;
+4. the human's next morning report opens with a short shout-out;
+5. the team board is renamed "(alumni)" and kept, never deleted, and so is its label.
+
+Teams that ship deserve a send-off; it also makes the record of what each team achieved easy to find.
