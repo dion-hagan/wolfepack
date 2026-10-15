@@ -65,7 +65,7 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
   about 3%.
 - Why: every call re-reads the whole conversation. Long-running managers, directors and builders on
   their fifth fix round pay for their entire past on every step.
-- Now: four rules in every brief. Hand off at about 150k tokens of context; one fresh agent per PR;
+- Now: four rules in every brief. Hand off at about 200k tokens of context; one fresh agent per PR;
   the mid tier by default (the top tier for security, concurrency, migrations and design); no
   polling turns (one blocking CI wait, not a loop of tool calls). And pace the work to the
   subscription's weekly and 5-hour windows, so that extra usage stays near zero.
