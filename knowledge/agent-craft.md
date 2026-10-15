@@ -69,3 +69,30 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
   the mid tier by default (the top tier for security, concurrency, migrations and design); no
   polling turns (one blocking CI wait, not a loop of tool calls). And pace the work to the
   subscription's weekly and 5-hour windows, so that extra usage stays near zero.
+
+### A design question to the human is a cost; decide at the lowest competent level
+- Seen: in one day the human was asked about effect tiers, defaults, phase order and a contest
+  prize, and pushed back: "you're asking me too many design questions, this is your project too".
+- Why: every question waits on the busiest person and stalls a team.
+- Now: the owning manager recommends, the Director confirms, a decisions log records it, and the
+  weekly report summarises it (`agents/manager-brief.md`, house rules).
+
+### Messages between agents cost a wake-up, not words
+- Seen: asked whether agents could talk in a denser language to save tokens. A message is cheap;
+  waking an idle session to read it re-reads its whole context (100k+ tokens).
+- Why: billing is dominated by re-read context, not message length.
+- Now: batch messages, no acknowledgements, "no reply needed" on FYIs, plain English for auditability.
+
+### A test that asserts the planner's choice on a tiny table is flaky
+- Seen: a test expected an index-only scan on a 2-row table; CI failed unrelated PRs at random, and
+  locally it failed every time.
+- Why: `VACUUM` can't mark pages all-visible while another pooled connection holds an older
+  snapshot, so an index-only scan pays heap fetches and ties with a plain scan of another index.
+  (Turning off plain index scans doesn't help: it disables index-only scans too.)
+- Now: give the index real selectivity (hundreds of older rows), or assert the index's definition
+  instead of the plan. Reproduce about 20 times before merging. A test that fails an unrelated PR
+  twice gets a card at the top of its owner's Ready list the same day.
+
+### Connectors have shapes; check them before promising a format
+- Seen: a file-storage connector could only create text files, so PDFs couldn't be uploaded.
+- Now: upload HTML versions, and use the connector's server-side copy to avoid re-sending content.

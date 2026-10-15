@@ -66,3 +66,32 @@
   allowed others (a spec change, a merge). Each call is judged on its own.
 - Now: before an absence, the human adds narrow allow rules (`docs/absence-mode.md`). A refusal is
   reported and never routed around.
+
+### A staging copy must be safe to open anywhere and share nothing with production
+- Seen: a staging environment was set up in an afternoon: its own database, storage and domain, a
+  sign-in limited to admins, and demo content seeded from free-licence stock.
+- Why: copying production data into staging puts real users' content on a demo box, and a shared
+  storage zone lets staging delete live files.
+- Now: never copy production folders into staging; lock staging's database to the staging app;
+  point staging at a fresh database after any window where sign-up was open.
+
+### A rolling deploy can exhaust a small database's connections
+- Seen: on the smallest managed Postgres (about 22 connections), a deploy ran the old and new web
+  and worker side by side; a boot-time seed job hit "remaining connection slots are reserved",
+  swallowed the error and never retried.
+- Why: during a rolling deploy, connection pools briefly double.
+- Now: boot-time jobs retry with backoff while the database is unavailable; restart only the
+  worker component to re-run one (`doctl apps restart --components worker`).
+
+### Every deploy restarts the workers; batch merges into windows
+- Seen: three deploys in 15 minutes kept handing a long render back to the queue, and a batch
+  script that queued work faster than it finished made it worse.
+- Now: release windows (`docs/merging.md`), and queue long jobs one at a time as the queue drains.
+
+### Path-filtered CI must keep its check names
+- Seen: CI was cut from about 15 to 5.6 minutes by running only the jobs a change needs and
+  sharding the slow suite into four parallel jobs, for about 10% more total CI time.
+- Why: merge rules check named checks, so a skipped job must still report success, and one
+  aggregate check must fail if any shard fails, is cancelled or is skipped unexpectedly.
+- Now: keep job names stable, shard by measured per-file time, and give each shard its own
+  test database.

@@ -205,6 +205,19 @@ restructure it, and re-brief.
 | Weekly | Operation review: OKR scores, paired indicators, the staffing plan | Director to CEO |
 | Each cycle (1–2 weeks) | Team reviews, new OKRs, structure changes | Director, with the CEO ratifying |
 
+### The weekly operating report
+
+Weekly (and on request), the Director writes one phone-friendly report for the human:
+0. the short version: the goal and the odds of hitting it, engineering, health, money;
+1. **major wins**;
+2. **OKRs**: each key result with now / due / miss risk, as an honest percentage;
+3. **in-flight initiatives**: what each is and its expected, measurable impact;
+4. **team health**: a colour per team for workload, output and morale, the Director's own row
+   included. Slips go on a separate "slips and fixes" line as facts, not as a lower colour:
+   one missed review shouldn't make a strong team look shaky;
+5. ideas to run smoother;
+6. what the human must do (only their kind of decisions).
+
 ## 11. The dashboard
 
 All of this needs one place to look. An admin dashboard (built per project) shows:

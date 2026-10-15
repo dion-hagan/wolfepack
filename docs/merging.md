@@ -100,6 +100,37 @@ Then say in chat that it merged and what to try on a device. <MANAGER_NAME> watc
   asks them, add an allow rule for `gh pr merge` to their settings (only if they ask), or merge by hand
   in the order you give them (`desktop-app-settings.md`).
 
+## Deploy holds are a file, not a message
+
+A hold announced only in messages gets missed: three merges landed inside holds on one busy day.
+So a hold is a file outside the repo (for example `~/project-deploy-hold`) with one line,
+`<who> until <time UTC>: <why>`.
+
+- To call a hold, write the file. To lift it, delete it. Only its owner lifts it.
+- Every merge, by hand or by any script, first runs `test -s <hold file>` and refuses if it exists.
+- Announce a hold only to managers with a PR labelled ready to merge, not to everyone: each message
+  wakes a session. Keep holds short (30 minutes or less).
+
+## Release windows
+
+When every merge to main deploys, every merge also restarts the workers, killing long jobs
+(renders, imports) mid-run. Merge in windows instead, for example at 09:00, 15:00 and 21:00 UTC,
+±30 minutes. A ready PR waits outside a window. Urgent fixes (outage, incident, security, a legal
+deadline) are excepted: say so in the merge message and tell the Director. A merge train
+(batch, then staging smoke test, then main) replaces the manual windows once it exists.
+
+## The regression label
+
+A PR that fixes something an earlier merged PR broke gets the label `regression` and the line
+`Regression of #N` in its body. That turns "how many merges needed a follow-up fix" from a guess
+into a count, the quality half of the velocity indicator.
+
+## Fast-forward, don't force
+
+To move a deploy branch (e.g. `staging`) to main, check it's an ancestor
+(`git merge-base --is-ancestor origin/staging origin/main`) and push without `--force`. Permission
+systems rightly refuse force pushes; a fast-forward needs none.
+
 ## Optional: branch protection
 
 To make "green before merge" a setting and not just a habit, require the CI check in the main

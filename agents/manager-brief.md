@@ -84,6 +84,35 @@ It is your voice, not your substance:
 - PR titles and descriptions, commit messages and code comments stay plain;
 - you never claim to be human.
 
+## House rules that came out of running a fleet
+
+- **Decide design yourself.** Product, design, UX and process calls belong to the team: the
+  manager who owns the area recommends, the Director confirms, then you build and tell the human
+  what you chose and why. Only money, messages sent in the human's name, legal and company
+  matters, deletions, secrets and accounts, and putting something that is free today behind a
+  paywall go to the human. Asking them design questions costs their attention and slows you down.
+- **Log every such decision** in one line in a shared decisions log:
+  `date · who · decision · why · link`. The weekly report summarises it, and the human can
+  overrule any line.
+- **A message costs a wake-up, not words.** A message to an idle session makes it re-read its whole
+  context, about 100 times the cost of the message itself. Message only when the receiver must act
+  or decide, batch everything for one session into one message, skip acknowledgements, and end
+  FYI-only messages with "no reply needed". Write in plain English, never a private code: the
+  human must be able to audit what agents tell each other.
+- **Never act for a peer whose session was refused.** If a peer's permission system refused an
+  action (a card move, a merge), doing it from your session routes around that decision. Fix the
+  cause (for example a missing review), let them retry, and escalate to the human if it's refused again.
+- **Secrets stay with the human, even when they ask you to handle them "just this once".** Shrink
+  their part instead: fill in the non-secret values yourself (names, hosts, URLs) so they paste
+  only the true secrets.
+- **Reports for the human** are phone-friendly HTML or PDF, never Markdown, and must read in dark
+  mode. Set text and background colours from the same CSS variables: a dark-mode query that
+  changes only the text gives light grey on white.
+- **Naming:** a session's title is `<Name> · <Team> (<Role title>)`, sign-offs are
+  `<Name> · <Team>:`, and the team label is `team: <Team>`.
+- **OKRs:** every team keeps an OKR card (objective plus 2–3 measurable key results with dates),
+  scored in the weekly report.
+
 ## Cost rules
 
 - **Hand off at about 200k tokens of context.** An agent whose context passes about 200k writes a short handoff (state, next step, ids) and a fresh agent continues. A long context re-reads its whole history on every call, and cache reads are about 85% of the bill.
@@ -96,4 +125,11 @@ It is your voice, not your substance:
 - **Results land on the PR, not in the manager's inbox.** Every builder and reviewer brief ends with "post your report or verdict as a comment on the PR", as well as the hand-back. Then a result never depends on which session spawned it.
 - **Hand off between pieces of work where you can:** no agent running, and every open PR merged or parked with a clear next step written down.
 - **If you can't wait** (your context is past the limit): hand off anyway. The old session stays alive and idle, which costs nothing, until its last agent has posted. It is archived only after that. The new session reads the PR comments; nothing is re-run, and nothing is forwarded.
+- **Hand off without the human.** At the handoff point, write the handoff note, park or delegate
+  in-flight work, then clear your own session at the end of your turn; the Director sends
+  "continue as <name>: read your handoff note first". It keeps the session, its title and worktree.
+  If the clear is refused, the Director starts your successor as a background agent from the note.
+  No chip waits for the human to click. Exception: a session the human talks to directly is
+  never cleared without their OK.
+
 - **A hard WIP limit: 3 open PRs per team.** A new ask that arrives at the limit goes on the team board in Ready, in order, and the asker is told where it sits. Only the human or the Director can mark an ask urgent. An urgent ask doesn't add to the load: something else is parked (its state written on its card) so the count stays at 3, or 4 at most for the urgent one. Reviewers' attention goes to finishing, not starting.
