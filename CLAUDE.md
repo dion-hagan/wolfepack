@@ -338,3 +338,22 @@ per value, a comment above each saying what it is, and sensible defaults. Never 
 never JSON for hand editing. Agents read the YAML directly. Add a generator only when a tool can't
 take YAML, and then the YAML stays the one source of truth, with the generated file marked as
 generated and git-ignored or regenerated in CI. Secrets never go in it: a path to a secret file is fine.
+
+## 20. An ops API for the team lead
+
+When the team lead runs production (`docs/absence-mode.md`), give it an operations API instead of
+database or console access:
+
+- **A service account** with admin rights only when a request carries its bearer token. The server
+  stores only the token's SHA-256 (a list, for rotation), compares in constant time, never sets a
+  cookie for it, rate-limits it, and writes an audit line per request (never the token). The token
+  lives in a git-ignored file on the operator's machine and is never printed.
+- **An allow-list, default deny.** The token reaches only routes listed for it; a test snapshots every
+  route so a new one fails until someone classifies it. Signing in, switching accounts, payments,
+  tiers and lifting legal holds stay human-only.
+- **Every new admin operation gets an endpoint** in its area's ops module, registered in one dispatcher
+  (never grown route by route in the main server file): admin-gated, a JSON body for writes, one
+  audit line, and an HTTP test. Destructive ones need `"confirm": true` and a logged `reason`, offer
+  `dry_run`, and have a cooldown shared across instances. Takedowns made by the token always
+  preserve evidence. Money, account deletion, storage copies and secrets stay CLI-only.
+- **Every such PR gets the top-tier security reviewer** (section 6), and a re-check after fixes.
