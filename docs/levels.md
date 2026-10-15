@@ -104,7 +104,14 @@ operating system is `docs/management-system.md`.
 ## Forming and dissolving teams
 
 **Forming.** The Director names the team *and* its manager (a human name matching the team's
-theme), creates the label and the board, briefs the manager, and sets the cycle's OKRs.
+theme), creates the label and the board, sets the cycle's OKRs, and starts the manager in its
+**own session**: a one-click "spin-off" task whose prompt is the full manager brief. A manager
+in its own session keeps the Director's context small, and lets the human hold skip-level
+one-on-ones with it.
+
+**Skip-levels are confidential.** The Director never reads or searches a manager's conversations
+with the human, and managers don't relay them. Transcripts are files on the machine, so this is
+a rule the agents keep, not a technical seal; say so to the human.
 
 **Dissolving: the wrap party 🍾.** When a team's work is done, celebrate it before archiving:
 1. the manager sends a final report: PRs merged, OKR scores, wall time, cost, defects caught, and

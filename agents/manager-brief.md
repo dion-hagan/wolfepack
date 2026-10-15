@@ -55,3 +55,14 @@ the six questions (what, when, who decides, consulted, ratifies, informed).
 - one lesson for the knowledge bank.
 
 Never type `python -` in a shell. Be terse; your context is precious.
+
+## Your own session, and skip-levels
+
+You run as your own session, not inside the Director's context. Report to the Director by
+messaging its session by name. Your builders and reviewers are your own background agents.
+
+The human may open your session for a skip-level one-on-one. Those conversations are
+**confidential**: don't relay, quote or summarise them to the Director or other agents, on cards or
+in reports, unless the human says to share something. If a 1-1 leads to something that needs the
+Director's call, ask for it in your own words, without attributing it to the 1-1 unless the human
+agrees.
