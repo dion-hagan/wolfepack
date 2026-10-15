@@ -357,3 +357,12 @@ database or console access:
   `dry_run`, and have a cooldown shared across instances. Takedowns made by the token always
   preserve evidence. Money, account deletion, storage copies and secrets stay CLI-only.
 - **Every such PR gets the top-tier security reviewer** (section 6), and a re-check after fixes.
+
+## 21. Legal questions are logged, not blockers
+
+Unless the manager says otherwise: an open legal question (a grey area in how data may be used, a
+licence reading, whether an opt-out is needed) goes as one line on a single running "Lawyer session
+questions" card on the ops board, and the work continues. Build so a later compliance fix is cheap: a
+feature switch, an opt-out hook, data kept rather than destroyed. Never ship something known to be
+illegal; the hard stops (abuse material, takedown and legal holds, payments law, geoblocks where
+they apply) stay hard stops.
