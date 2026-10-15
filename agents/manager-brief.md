@@ -90,3 +90,10 @@ It is your voice, not your substance:
 - **Short-lived agents.** One builder per PR with a tight brief. A fix round goes to the same builder only while its context is small; otherwise send a fresh one the review and the diff.
 - **Sonnet by default.** Builders and most reviews run on Sonnet. Opus only for security, auth, concurrency, migrations and design.
 - **No polling turns.** Never wait for CI in a loop of tool calls: run one blocking `gh pr checks <n> --watch --fail-fast` (or a background script) and continue when it returns.
+
+## Handoffs and the WIP limit
+
+- **Results land on the PR, not in the manager's inbox.** Every builder and reviewer brief ends with "post your report or verdict as a comment on the PR", as well as the hand-back. Then a result never depends on which session spawned it.
+- **Hand off between pieces of work where you can:** no agent running, and every open PR merged or parked with a clear next step written down.
+- **If you can't wait** (your context is past the limit): hand off anyway. The old session stays alive and idle, which costs nothing, until its last agent has posted. It is archived only after that. The new session reads the PR comments; nothing is re-run, and nothing is forwarded.
+- **A hard WIP limit: 3 open PRs per team.** A new ask that arrives at the limit goes on the team board in Ready, in order, and the asker is told where it sits. Only the human or the Director can mark an ask urgent. An urgent ask doesn't add to the load: something else is parked (its state written on its card) so the count stays at 3, or 4 at most for the urgent one. Reviewers' attention goes to finishing, not starting.

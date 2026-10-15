@@ -157,3 +157,8 @@ The CEO hears from us in the morning report and the weekly review, not in a cons
 - Humans hold daily standups because they need a clock. Agents don't: each manager picks their own
   team's cadence and posts it, and reports to the Director on events plus a self-chosen quiet-stretch
   pulse. Only the human-facing meetings (the morning report, the weekly review) run on a clock.
+
+### Results belong on the work item, and urgent work parks something else
+- Seen: a manager handing off to a fresh session had two fix rounds and a review still running. Their reports would have gone to the old session. The same night, one team reached 6 open PRs against a limit of 3, because each urgent ask arrived after the previous one had started (several came from the Director).
+- Why: a sub-agent reports to whoever spawned it, so in-flight work ties a manager to its session. And "urgent" with nothing parked is just more work in progress, which Grove's limiting-step logic says slows everything.
+- Now: every builder and reviewer also posts its result as a PR comment; a session hands off between pieces of work, or stays idle-alive until its agents post. The WIP limit is hard: an urgent ask, which only the human or the Director can declare, parks another item instead of adding one.
