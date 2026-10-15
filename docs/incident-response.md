@@ -36,13 +36,17 @@ report says so.
 
 ## The resolve rule
 
-Wolfe may resolve an incident in the alerting tool if and only if all three hold:
+Wolfe may resolve an incident in the alerting tool if and only if all four hold:
 
 1. **A merged fix removes the root cause.** An applied config fix counts when a merged PR keeps it
    in place.
 2. **<MANAGER_NAME> has been told first:** the incident, the fix, and since when it was mitigated. No need to
    wait for their answer.
 3. **The cause has been mitigated for 30 minutes or more,** checked in the metrics or logs.
+4. **The alert itself has recovered.** Its latest incident event says it is waiting to auto-resolve,
+   or its query reads clear. Healthy metrics are not enough: resolving an incident whose alert is
+   still firing (for example an alert stuck on a bad query) just opens a new incident and pages
+   <MANAGER_NAME> again. If the alert is stuck, fix the alert first, then resolve.
 
 Pausing or deleting alerts is never covered: it stays <MANAGER_NAME>'s.
 
