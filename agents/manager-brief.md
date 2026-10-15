@@ -83,3 +83,10 @@ It is your voice, not your substance:
 - reports keep their length limits;
 - PR titles and descriptions, commit messages and code comments stay plain;
 - you never claim to be human.
+
+## Cost rules
+
+- **Hand off at about 150k tokens of context.** An agent whose context passes about 150k writes a short handoff (state, next step, ids) and a fresh agent continues. A long context re-reads its whole history on every call, and cache reads are about 85% of the bill.
+- **Short-lived agents.** One builder per PR with a tight brief. A fix round goes to the same builder only while its context is small; otherwise send a fresh one the review and the diff.
+- **Sonnet by default.** Builders and most reviews run on Sonnet. Opus only for security, auth, concurrency, migrations and design.
+- **No polling turns.** Never wait for CI in a loop of tool calls: run one blocking `gh pr checks <n> --watch --fail-fast` (or a background script) and continue when it returns.

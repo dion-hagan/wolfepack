@@ -58,3 +58,14 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
   but it stayed in the public history.
 - Now: run the scrub grep BEFORE `git add`; any hit stops the commit. Write new generic files fresh
   rather than copying project files and editing them down.
+
+### Most of the bill is re-read context; keep agents short-lived
+- Seen: one day of about 40 merged PRs cost about $25-30 per PR at API prices. About 85% of it was cache
+  reads: the average top-tier call re-read about 316k tokens of its own history. The output was
+  about 3%.
+- Why: every call re-reads the whole conversation. Long-running managers, directors and builders on
+  their fifth fix round pay for their entire past on every step.
+- Now: four rules in every brief. Hand off at about 150k tokens of context; one fresh agent per PR;
+  the mid tier by default (the top tier for security, concurrency, migrations and design); no
+  polling turns (one blocking CI wait, not a loop of tool calls). And pace the work to the
+  subscription's weekly and 5-hour windows, so that extra usage stays near zero.
