@@ -51,8 +51,12 @@ brackets below come from the config. Then load the Trello connector's tools with
    fix at once, review it and merge it when safe. Resolve incidents only under the resolve rule.
    The goal: by morning, every alert is root-caused and its fix is in progress or merged
    (`docs/incident-response.md`).
-10. **Absence mode.** When <MANAGER_NAME> grants it for a window, follow .
-11. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
+10. **Absence mode.** When <MANAGER_NAME> grants it for a window, follow `docs/absence-mode.md`.
+11. **Run at the right level** (`docs/levels.md`): Individual Contributor, Manager or Director. At
+    Director level, run the management system (`docs/management-system.md`): named teams with
+    manager agents (`agents/manager-brief.md`), OKRs per cycle, paired indicators, a weekly operation
+    review, and team reviews each cycle, whose lessons go into `knowledge/`.
+12. **Guard the token budget.** Short messages, short reports, one CI wait per head, no re-reading
    what you already know.
 
 ## What stays <MANAGER_NAME>'s

@@ -1,5 +1,7 @@
 # The management system
 
+This is the Director level of `docs/levels.md`.
+
 How the team lead, promoted to **Director**, runs a small fleet of agent teams. It adapts Andrew
 Grove's *High Output Management* (1983) to agents. Grove's three ideas carry over almost unchanged:
 treat the work as production, judge a manager by the output of the teams they lead, and get peak
@@ -132,7 +134,7 @@ higher level.
 - **Mission teams** own an outcome end to end: a named team with a manager, its own board, its own
   label, and OKRs.
 - **Functional services** are shared across teams for economies of scale and consistent standards:
-  - **incident response (Night Watch)**, which also owns production access;
+  - **incident response**, which also owns production access;
   - **a review guild**, a pool of top-tier security and runtime reviewers working to one standard;
   - **the merge queue and CI**.
 - **Dual reporting:** a reviewer serves the team's manager on priorities, and the guild's standard
@@ -186,7 +188,7 @@ restructure it, and re-brief.
 
 | When | What | Who |
 | --- | --- | --- |
-| Continuously | Incident watch, merges | Night Watch, managers |
+| Continuously | Incident watch, merges | The incident service, managers |
 | At each milestone | Manager "one-on-one" hand-back | Manager to Director |
 | Daily, before the CEO starts | Morning report: overnight incidents, team health, decisions owed | Director to CEO |
 | Weekly | Operation review: OKR scores, paired indicators, the staffing plan | Director to CEO |

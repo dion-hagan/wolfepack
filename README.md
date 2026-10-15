@@ -48,6 +48,7 @@ wolfepack/
     worker-brief.md        the brief for a card agent started by hand
     reviewer-briefs.md     the runtime, structure, both-lens and docs reviewer briefs
     incident-responder-brief.md  the read-only brief for an agent sent after an alert
+    manager-brief.md       the brief for a team manager agent (Director level)
   skills/                  installed to ~/.claude/skills/
     trello-dispatch/       SKILL.md + worker-brief.md: work the board
     trello-card/           SKILL.md: take or file one card
@@ -60,7 +61,10 @@ wolfepack/
     desktop-app-settings.md  app settings, permission modes, Trello connector, gh auth
     memory.md              memory folder conventions
     incident-response.md   alert -> responder -> fix -> merge -> resolve; severity; the resolve rule; scaling
+    levels.md              the three levels of investment: Individual Contributor, Manager, Director
+    management-system.md   the Director playbook: production, paired indicators, leverage, TRM, OKRs, reviews
     absence-mode.md        a trial: full operating permissions while <MANAGER_NAME> is away, with guardrails
+  knowledge/               the knowledge bank: what was learned, by area (management, operations, agent craft, experiments)
   templates/
     pull_request_template.md   card.md   ops-card.md   status-report.md
 ```
