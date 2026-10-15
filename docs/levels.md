@@ -77,7 +77,9 @@ operating system is `docs/management-system.md`.
 2. a coloured `team: <Name>` PR label;
 3. a board "Team <Name>" with lists Backlog, Ready, In progress, In review, Done;
 4. a manager agent briefed from the manager brief (`agents/manager-brief.md`), with the team's
-   OKRs for the cycle.
+   OKRs for the cycle;
+5. a human name for the manager that matches the team's theme (a night-watch team's manager might
+   be a raven-themed name), used to sign reports and card comments.
 
 **Rituals:**
 - managers send milestone hand-backs (their "one-on-ones");
