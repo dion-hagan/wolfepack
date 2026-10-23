@@ -28,8 +28,13 @@ these rules), stop and ask. Comments that start with `Claude (` are Claude's not
 2. Read the project's `CLAUDE.md` and `~/.claude/CLAUDE.md`, and follow them. Where they and this
    brief differ, they win, except for what this brief says the dispatcher does (the reviews,
    Trello, merging).
-3. Build what the card asks, with tests. Run `<CI_COMMAND>`. A UI change needs screenshots at
-   desktop, tablet and phone widths in the PR.
+3. Before changing anything, run the project's smoke check: start the app and walk one core path.
+   If it is already broken on the main branch, stop and report it rather than build on it. Then
+   build what the card asks, with tests, one piece at a time, committing each piece that works.
+   Before you call it done, walk each "Done when" line as a user would (browser, phone-width
+   viewport), not only through tests. If the card belongs to a launch with an acceptance list, or
+   may outlast your context, follow wolfepack's `docs/long-running-work.md`. Run
+   `<CI_COMMAND>`. A UI change needs screenshots at desktop, tablet and phone widths in the PR.
 4. A schema migration: `git fetch origin` and check the number again just before you open the PR
    (above `origin/<MAIN_BRANCH>` and every open PR's); if it is taken, take the next free one and
    say so in your report.

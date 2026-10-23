@@ -66,6 +66,9 @@ items are really "waiting on a review and a merge".
 
 1. Fill in `wolfepack.config.yaml` for the project (or the global one).
 2. Make sure the project has a `CLAUDE.md` with its commands and its "never touch" list, a PR
-   template (start from `templates/pull_request_template.md`) and a one-command check.
+   template (start from `templates/pull_request_template.md`) and a one-command check. Add one
+   command that starts the app locally and a short smoke check (one core path a user takes), both
+   named in `CLAUDE.md`: every builder runs them before changing anything
+   (`long-running-work.md`).
 3. Create the PR labels (`merging.md`) and the boards (`trello-board.md`).
 4. Open a session in the project, paste `agents/wolfe.md`, and let Wolfe take it from there.

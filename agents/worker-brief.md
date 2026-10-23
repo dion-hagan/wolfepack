@@ -31,7 +31,12 @@ rules), stop and ask.
    worktree came from the local main branch, which falls behind.
 2. Read the project's `CLAUDE.md`, and follow it and `~/.claude/CLAUDE.md`. Where they differ on a
    project fact, the project wins.
-3. Build what is asked, with tests. Run `<CI_COMMAND>` before you push.
+3. Before changing anything, run the project's smoke check: start the app and walk one core path.
+   If it is already broken on the main branch, stop and report it rather than build on it. Then
+   build what is asked, with tests, one piece at a time, committing each piece that works. Before
+   you call it done, walk each "Done when" line as a user would (browser, phone-width viewport),
+   not only through tests. If the work belongs to a launch with an acceptance list, or may outlast
+   your context, follow `docs/long-running-work.md`. Run `<CI_COMMAND>` before you push.
 4. A schema migration: `git fetch origin` and check the number again just before you open the PR
    (above the remote main branch's highest and every open PR's). If it is taken, take the next free
    one and say so in your report.

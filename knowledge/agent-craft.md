@@ -101,3 +101,13 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
 - Seen: after the desktop app restarted, sending to a session by its display name failed, though
   the session was alive.
 - Now: list the sessions, then send to the session's id. Sending by id also wakes an idle session.
+
+### Agents call work done early; give them a list they can only tick
+- Seen: Anthropic's study of long-running coding agents found two failures across sessions: trying
+  to do everything at once and running out of context mid-change, and a later session declaring
+  the project done, or ticking features after unit tests without trying them as a user. It matches
+  ours: features that passed CI but had dead ends a person found in a minute.
+- Why: each session starts with no memory and judges "done" from what it can see.
+- Now: a launch carries a JSON acceptance list on its branch whose items builders can only flip
+  after walking them, a progress file, and a startup routine that runs a smoke check before any
+  change (`docs/long-running-work.md`).

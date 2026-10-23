@@ -64,9 +64,10 @@ wolfepack/
     levels.md              the three levels of investment: Individual Contributor, Manager, Director
     management-system.md   the Director playbook: production, paired indicators, leverage, TRM, OKRs, reviews
     absence-mode.md        a trial: full operating permissions while <MANAGER_NAME> is away, with guardrails
+    long-running-work.md   launches that outlast a session: acceptance list, progress file, startup routine
   knowledge/               the knowledge bank: what was learned, by area (management, operations, agent craft, experiments)
   templates/
-    pull_request_template.md   card.md   ops-card.md   status-report.md
+    pull_request_template.md   card.md   ops-card.md   status-report.md   acceptance.json
 ```
 
 ## Quick start: the bare minimum (5 minutes)

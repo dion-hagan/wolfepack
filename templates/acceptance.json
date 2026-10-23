@@ -1,0 +1,14 @@
+[
+  {
+    "id": "example-short-id",
+    "area": "the part of the product, e.g. playback",
+    "behaviour": "One sentence a user would recognise: what they do and what they see",
+    "steps": [
+      "Open <page> at <viewport>",
+      "Do <action>",
+      "See <result>"
+    ],
+    "passes": false,
+    "checked": ""
+  }
+]
