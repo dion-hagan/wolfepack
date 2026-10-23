@@ -111,3 +111,12 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
 - Now: a launch carries a JSON acceptance list on its branch whose items builders can only flip
   after walking them, a progress file, and a startup routine that runs a smoke check before any
   change (`docs/long-running-work.md`).
+
+### A rule agents keep breaking becomes a hook, not another line in the rules
+- Seen: "never run `python -`" was in the project rules, yet agents kept writing it; on a Windows
+  machine whose `python` is the Store build, each one hung the shell until its timeout.
+- Why: a rule in a long file competes with everything else in context; a habit from training wins
+  often enough to hurt.
+- Now: a `PreToolUse` hook on Bash and PowerShell (`hooks/block-python-stdin.py`) refuses the
+  command and tells the agent what to do instead. Test a hook with a command that is harmless if
+  the hook misses (`true || python -`). Any rule broken twice is a candidate for a hook.

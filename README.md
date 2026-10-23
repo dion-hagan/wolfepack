@@ -66,6 +66,8 @@ wolfepack/
     absence-mode.md        a trial: full operating permissions while <MANAGER_NAME> is away, with guardrails
     long-running-work.md   launches that outlast a session: acceptance list, progress file, startup routine
   knowledge/               the knowledge bank: what was learned, by area (management, operations, agent craft, experiments)
+  hooks/
+    block-python-stdin.py  PreToolUse hook (Windows): refuses `python -` and a bare `python`, which hang agent shells
   templates/
     pull_request_template.md   card.md   ops-card.md   status-report.md   acceptance.json
 ```
