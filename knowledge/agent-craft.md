@@ -96,3 +96,8 @@ reruns, and the lead's context added 5–10k tokens per team per feature.
 ### Connectors have shapes; check them before promising a format
 - Seen: a file-storage connector could only create text files, so PDFs couldn't be uploaded.
 - Now: upload HTML versions, and use the connector's server-side copy to avoid re-sending content.
+
+### After an app restart, message sessions by id
+- Seen: after the desktop app restarted, sending to a session by its display name failed, though
+  the session was alive.
+- Now: list the sessions, then send to the session's id. Sending by id also wakes an idle session.

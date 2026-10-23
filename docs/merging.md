@@ -93,7 +93,10 @@ Then say in chat that it merged and what to try on a device. <MANAGER_NAME> watc
 - A change that needs <MANAGER_NAME>: leave the PR open with `blocked: waiting on <MANAGER_NAME>` and one line saying
   why, tell them, and file any manual step on their ops board.
 - Order: merge the PR that others are waiting behind first, then the ones that touch shared files,
-  then the rest. Update each remaining branch from main once.
+  then the rest. Update each remaining branch from main once. A shared index doc that nearly every
+  PR edits (a module map, a changelog) turns each merge into an update plus a fresh CI and staging
+  run for every PR behind it: merge those PRs back to back, and prefer a per-module file over one
+  shared list.
 - If CI is red for a reason unrelated to the PR, say so in the PR. Do not re-run until it passes.
 - When the permission system refuses `gh pr merge` (auto mode's classifier can), do not retry or
   route around it. Finish the prep, then offer <MANAGER_NAME> three ways: switch the session to a mode that
@@ -118,6 +121,24 @@ When every merge to main deploys, every merge also restarts the workers, killing
 ±30 minutes. A ready PR waits outside a window. Urgent fixes (outage, incident, security, a legal
 deadline) are excepted: say so in the merge message and tell the Director. A merge train
 (batch, then staging smoke test, then main) replaces the manual windows once it exists.
+
+## Watch each deploy, and judge only what's new
+
+After every merge, watch the deploy: wait until the site reports the new commit, smoke-check the
+main pages, wait about 10 minutes, then read the alerts. Note the time the deploy went live. An
+alert that was already open, or started before that time, is not this deploy's: count only alerts
+that started after it. Otherwise one old open alert makes every deploy look bad and the watch stops
+meaning anything. Run the watch as one background script that writes the deploy-watch marker and
+clears it when the watch ends quiet, so the next merge waits for it.
+
+## Staging for one PR, and a final PR for a launch
+
+- When a merge train isn't worth it (one code PR in the window), run the staging check on that PR
+  alone. Docs-only and CI-only PRs skip staging.
+- A launch built in steps (several PRs on one feature branch, kept off for users) ends in one final
+  PR from that branch to main. It goes on staging, labelled `needs testing`, and waits for
+  <MANAGER_NAME> to try it by hand. When a launch's point is how it feels, their test is the
+  acceptance test, so this is the exception to "a device test does not hold a merge".
 
 ## The regression label
 

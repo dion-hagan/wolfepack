@@ -95,3 +95,27 @@
   aggregate check must fail if any shard fails, is cancelled or is skipped unexpectedly.
 - Now: keep job names stable, shard by measured per-file time, and give each shard its own
   test database.
+
+### A dependency install in CI needs a time limit and a cache
+- Seen: package-mirror stalls left CI shards hanging on an apt install until the job timeout, and
+  several PRs in a row waited behind reruns.
+- Why: package managers retry slow mirrors for a long time; with no time limit, one stall costs
+  a whole job.
+- Now: install through a script with a hard time limit and two tries, and cache the downloaded
+  packages (keyed by version, saved from the main branch) so most runs skip the mirror. A stall now
+  fails in minutes; rerun only the failed jobs.
+
+### A health check on a cheap endpoint stops deploy blips
+- Seen: users saw brief errors during deploys while new instances took traffic before they could
+  serve it.
+- Why: with no health check, the platform routes to an instance as soon as its process starts.
+- Now: a health check on a fast endpoint that touches no heavy dependency (for example a version
+  route), every 10 seconds with a few failures allowed. Apply it like any spec change: copy before
+  and after, one change, then watch.
+
+### Test walks never create or delete accounts on production
+- Seen: an agent walking a sign-up-to-deletion flow was about to make and delete a test account on
+  the live site.
+- Why: a deletion on production fires real alerts, audit rows and possibly emails, and a test
+  account there skews the numbers.
+- Now: walk account flows on staging or a local stack. Production gets read-only checks.
