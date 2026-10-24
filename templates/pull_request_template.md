@@ -7,6 +7,12 @@ Trello: <!-- the card's link, or "none". This PR's status label moves the card. 
 <!-- What a user, an admin or <MANAGER_NAME> will see or do differently, in plain words. Then the how, briefly:
 the files that matter and why. Stacked on another PR? Say which. -->
 
+## Abilities removed or changed
+
+<!-- Anything a user could do before this PR and can't now, or can only do differently (hidden, moved
+behind a menu, signed-in only). Write "none" if nothing. Never leave it blank: the planner reads this
+section on every step PR, and <MANAGER_NAME> sees the roll-up before a launch merges. -->
+
 ## Checklist
 
 <!-- Tick what you did and write "n/a" after what does not apply. Do not delete lines. -->

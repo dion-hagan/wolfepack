@@ -57,6 +57,35 @@ Rules:
 - **The final PR (`merging.md`, "Staging for one PR, and a final PR for a launch") carries the list.** Its
   body says how many items pass and names those left for the device test.
 
+## Still works: the other half of the list
+
+A launch breaks things it never meant to touch. A list of only new behaviour checks what is being
+added and misses what is being lost. So every acceptance list has two kinds of item:
+
+- **`"kind": "new"`**: what the launch adds.
+- **`"kind": "still-works"`**: what users can already do in the area the launch touches. Before the
+  build starts, the planner walks the main branch and writes one item for each path there: every
+  way to pick, mix, save, undo, every list that remembers something, and every feed's mix of
+  content. A launch with no `still-works` items isn't ready to start.
+
+Rules for both kinds:
+
+- **Walk as the users are.** If most users are signed in, walk signed in. A guest-only walk misses
+  the signed-in paths, so keep a signed-in test account on the test environment.
+- **Reload, then come back.** Anything that remembers state (recent items, layout, settings) gets a
+  check after a page reload and another after closing and reopening.
+- **Measure feeds, don't eyeball them.** When a launch changes what a feed shows, compare each
+  feed's mix before and after, with a number.
+- **No silent removals.** A step PR that removes or hides an ability, even as a design call, says
+  so under "Abilities removed or changed" in its body (`templates/pull_request_template.md`). The
+  planner reads that section on every step PR, and <MANAGER_NAME> sees the roll-up before the launch
+  merges.
+- **A dogfood hour after the deploy.** The owning manager uses the live product as a real user for
+  an hour and files what they find. Fixes go through a fast lane: merged on green, outside release
+  windows.
+- **Check the builder's brief before narrowing scope.** Before a lead defers or trims a launch item,
+  they read what <MANAGER_NAME> asked the builder directly. A direct ask beats the plan.
+
 ## The progress file
 
 A plain text file in the builder's worktree, kept out of git (add `.agent-progress.md` to the

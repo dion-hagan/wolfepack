@@ -1,12 +1,27 @@
 [
   {
-    "id": "example-short-id",
+    "id": "example-new-item",
+    "kind": "new",
     "area": "the part of the product, e.g. playback",
     "behaviour": "One sentence a user would recognise: what they do and what they see",
     "steps": [
-      "Open <page> at <viewport>",
+      "Open <page> at <viewport>, signed in",
       "Do <action>",
       "See <result>"
+    ],
+    "passes": false,
+    "checked": ""
+  },
+  {
+    "id": "example-still-works",
+    "kind": "still-works",
+    "area": "an ability users have on the main branch today, in the area this launch touches",
+    "behaviour": "What a user could already do, and must still be able to do after the launch",
+    "steps": [
+      "Open <page> at <viewport>, signed in",
+      "Do <action>",
+      "See <result>",
+      "Reload the page and see it is still there"
     ],
     "passes": false,
     "checked": ""
